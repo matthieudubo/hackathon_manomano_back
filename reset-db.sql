@@ -43,3 +43,21 @@ VALUES
 ("https://cdn.manomano.com/haemmerlin-betonniere-non-tractable-160l-700w-bt-pro-170-P-273920-1442888_1.jpg",
 "BÉTONNIÈRE ÉLECTRIQUE HAEMMERLIN PROFESSIONNELLE BT PRO 190 - 315519001--",
 568.37);
+
+CREATE TABLE orders
+(
+  id_order INT NOT NULL AUTO_INCREMENT,
+  total_price INT NOT NULL,
+  date VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id_order)
+);
+
+CREATE TABLE products_orders
+(
+  id_product_order INT NOT NULL AUTO_INCREMENT,
+  id_order INT NOT NULL,
+  id_product INT NOT NULL,
+  PRIMARY KEY (id_product_order),
+  FOREIGN KEY (id_order) REFERENCES orders(id_order),
+  FOREIGN KEY (id_product) REFERENCES products(id_product)
+);
