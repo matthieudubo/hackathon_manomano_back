@@ -47,7 +47,7 @@ VALUES
 CREATE TABLE orders
 (
   id_order INT NOT NULL AUTO_INCREMENT,
-  total_price INT NOT NULL,
+  total_price DECIMAL(11,2) NOT NULL,
   date VARCHAR(50) NOT NULL,
   PRIMARY KEY (id_order)
 );

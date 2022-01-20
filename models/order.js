@@ -11,6 +11,13 @@ const validate = (data, forCreation = true) => {
   }).validate(data, { abortEarly: false }).error;
 };
 
+const validateProductsOrder = (data, forCreation = true) => {
+  const presence = forCreation ? 'required' : 'optional';
+  return Joi.object({
+    id_product: Joi.number().integer().presence(presence),
+  }).validate(data, { abortEarly: false }).error;
+};
+
 const findMany = () => {
   return db.query('SELECT * FROM orders', []).then(([results]) => results);
 };
@@ -33,9 +40,23 @@ const create = ({ total_price, date }) => {
     });
 };
 
+const createListProducts = (id_order, { id_product }) => {
+  return db
+    .query(
+      'INSERT INTO products_orders (id_order, id_product) VALUES (?, ?)',
+      [id_order, id_product]
+    )
+    .then(([result]) => {
+      const id = result.insertId;
+      return { id, id_order, id_product };
+    })
+};
+
 module.exports = {
   validate,
+  validateProductsOrder,
   findMany,
   findOne,
   create,
+  createListProducts,
 };
