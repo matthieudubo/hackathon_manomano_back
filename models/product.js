@@ -31,9 +31,18 @@ const findProductsFromOrder = (id_order) => {
     .then(([results]) => results)
 }
 
+const getMostPurchasedProducts = () => {
+  return db
+    .query(
+      'SELECT products.*, COUNT(*) as number_ordered FROM products_orders INNER JOIN products ON products_orders.id_product = products.id_product GROUP BY products_orders.id_product ORDER BY number_ordered DESC'
+    )
+    .then(([results]) => results)
+}
+
 module.exports = {
   findMany,
   findOne,
   validate,
   findProductsFromOrder,
+  getMostPurchasedProducts
 };
