@@ -62,3 +62,22 @@ CREATE TABLE products_orders
   FOREIGN KEY (id_order) REFERENCES orders(id_order),
   FOREIGN KEY (id_product) REFERENCES products(id_product)
 );
+
+INSERT INTO orders (total_price, date)
+VALUES
+(321.23, "12/01/2022"),
+(432.53, "12/01/2022"),
+(32.28, "12/01/2022"),
+(290.24, "12/01/2022"),
+(13.93, "12/01/2022"),
+(753.03, "12/01/2022");
+
+INSERT INTO products_orders (id_order, id_product)
+(1, 4),
+(5, 1),
+(4, 1),
+(4, 6),
+(3, 9),
+(3, 8),
+(4, 2),
+(1, 10);
