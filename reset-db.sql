@@ -73,6 +73,7 @@ VALUES
 (753.03, "12/01/2022");
 
 INSERT INTO products_orders (id_order, id_product)
+VALUES
 (1, 4),
 (5, 1),
 (4, 1),
